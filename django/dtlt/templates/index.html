@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+    <h1>hi iam {{ name }}</h1>
+    {% for city in cities %}
+        <p>{{ forloop.counter}}.{{ city }}</p>
+    {%endfor%}
+    <hr>
+    <h1>LIST OF STUDENTS</h1>
+    <table border="2px" cellpadding="7px">
+        <tr>
+            <th>NAME</th>
+            <th>degree</th>
+            <th>stream</th>
+            <th>marks</th>
+            <th>Grade</th>
+        </tr>
+        {% for std in std_details %}
+            {% if std.marks >= 45 and std.marks <= 90 %}
+                <tr>
+                    <td>{{ std.name }}</td>
+                    <td>{{ std.degree }}</td>
+                    <td>{{ std.stream }}</td>
+                    <td>{{ std.marks }}</td>
+                    <td>{{ std.grade }}</td>
+                </tr>
+            {% endif %}
+        {% endfor  %}
+    </table>
+</body>
+</html>
