@@ -1,0 +1,77 @@
+{% include "base.html" %}
+{% load static  %}
+
+{% block content %}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="{%  static 'css/dstyle.css' %}">
+<h1>profile</h1>
+<br>
+<div class="container">
+    <div class="jambotron">
+        <!--first row-->
+        <div class="row">
+            <div class="col-md-3">
+                <div id="card" class="card card-body">
+                    <img src="{% static 'images/yeshu.jpg' %}" alt="" width="20px"
+                    height="40px" >
+                    <h5>yeswanth M</h5>
+                    <p> i am fresher and software devps</p>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div id="card" class="card card-body">
+               
+                    <h4>my first job is game developer</h4>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi, voluptatum, sequi distinctio sapiente ut inventore quos numquam laboriosam soluta nisi quae voluptas! Assumenda deleniti perferendis aperiam facere neque exercitationem ad.</p>
+                </div>
+            </div>
+
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-4">
+                <div id="card" class="card card-body">
+                    <h5> skills </h5>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Amet ea porro eaque libero sapiente ducimus. Similique corrupti optio, dignissimos sunt laborum accusamus expedita iure odit cupiditate voluptatibus animi distinctio eius.</p>
+
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div id="card" class="card card-body">
+                    <h5>hobbies</h5>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quam maxime autem architecto, corrupti aliquam deleniti explicabo cumque, nisi cupiditate asperiores eum est eius itaque quia odit molestias incidunt excepturi officiis.</p>
+                    
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div id="card" class="card card-body">
+                    <h5>area of interest</h5>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi esse magnam sit totam aliquam ducimus commodi consequuntur deleniti iusto! Voluptates possimus quis odio a sapiente mollitia repudiandae facere quae laborum?</p>
+                    
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-6">
+                <div id="card" class="card card-body">
+                    <h5>yeswanth</h5>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis ullam magnam, earum sed rem voluptas quibusdam atque, repudiandae, labore optio nisi est animi voluptates explicabo delectus nesciunt debitis. Perspiciatis, et.</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div id="card" class="card card-body">
+                    <h5>yeswanth</h5>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae laudantium, ipsam magnam ipsum eius distinctio consequatur ea debitis dicta facere iure dolor qui, corporis nostrum velit repudiandae laboriosam dolore sint.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+
+
+{% endblock %}
+
+{% include 'footer.html' %}

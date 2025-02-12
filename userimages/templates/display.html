@@ -1,0 +1,47 @@
+{% include 'base.html' %}
+
+{% block content %}
+
+
+
+    <h1>Hey there you have uploaded your images....!!</h1>
+    
+    <table border="2">
+        
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Upload_time</th>    
+            <th>Images</th>
+        </tr>
+        {% for i in data %}
+        <tr>
+            <td>{{ i.name }}</td>
+            <td>{{ i.description }}</td>
+            <td>{{ i.upload_time }}</td>
+            <td>
+            {% if i.img %}
+                <img src="{{ i.img.url }}" alt="no img"> 
+            {% else %}
+                <p>No image to display</p>
+            {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    
+    <!-- <table>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Upload_time</th>
+        </tr>
+        <tr>
+            <td>{{ i.name }}</td>
+            <td>{{ i.description }}</td>
+            <td>{{ i.upload_time }}</td>
+        </tr>
+    </table> -->
+{% endblock %} 
+
+{% include 'footer.html' %}
