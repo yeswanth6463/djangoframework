@@ -1,9 +1,18 @@
 from django import forms
 from django.contrib.auth.models import User
+from regstrapp.models import UserProfile
+from django_recaptcha.fields import ReCaptchaField
 
 
 
-class UserProfileForm(forms.ModelForm):
+
+class UserForm(forms.ModelForm):
     class Meta:
         model=User
         fields=['username','email','password']
+
+class userProfileForm(forms.ModelForm):
+    class Meta:
+        model=UserProfile
+        fields=['phone','address','city','state','zipcode','image']
+    captcha = ReCaptchaField()
