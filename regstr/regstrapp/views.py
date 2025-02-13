@@ -6,7 +6,7 @@ from regstrapp.forms import UserProfileForm
 def register(request):
     form=UserProfileForm()
     context={
-        form:'form'
+        'form':form
     }
     return render(request,'registration.html',context)
     

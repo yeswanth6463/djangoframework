@@ -1,6 +1,6 @@
 from django.urls import path
 from regstrapp import views
 
-urlspatterns=[
+urlpatterns=[
     path("",views.register)
 ]
