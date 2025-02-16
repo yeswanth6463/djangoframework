@@ -47,6 +47,16 @@ RECAPTCHA_PUBLIC_KEY = '6Lf0ydUqAAAAAOpH-jALtwCPI3O1GNbLxSF0PfYS'
 RECAPTCHA_PRIVATE_KEY = '6Lf0ydUqAAAAAM-ktF7BU6gKHGFXrIJe-eSHNm4S'
 
 
+# password 
+PASSWORD_HASHERS = [
+    "django.contrib.auth.hashers.PBKDF2PasswordHasher",
+    "django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher",
+    "django.contrib.auth.hashers.Argon2PasswordHasher",
+    "django.contrib.auth.hashers.BCryptSHA256PasswordHasher",
+    "django.contrib.auth.hashers.ScryptPasswordHasher",
+]
+
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

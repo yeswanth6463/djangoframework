@@ -47,17 +47,21 @@
 </head>
 <body>
 <div class="container">
-    <h1>registration form</h1>
+    
     <div class="Jambotron">
-        
+        {% if registered %}
+        <h1>thank you for registration</h1>
+        <p>please proceed to <a href="#"> login </a></p>
+        {% else %}
+        <h1>registration form</h1>
         <form action="" enctype="multipart/form-data" method="POST">
-            {% csrf_token %}
-           
+            {% csrf_token %} 
             {{ form2.as_p }}
             {{ form1.as_p }}
             <input type="submit" value="REGISTER" class="btn btn-primary">
         </form>
-   
+        {% endif %}
     </div></div>
+    
 </body>
 </html>
