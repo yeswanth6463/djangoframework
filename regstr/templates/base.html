@@ -15,8 +15,13 @@
         justify-content: space-between;
         top: 0px;
         position:fixed;
+        backdrop-filter: blur(32px);
+        border: 0.5px solid rgb(80, 83, 81);
+        box-shadow: 2px 3px 40px rgb(0, 0, 0);
     }
-    .logo{
+    .logo,img{
+        
+        border-radius: 50%;
     
     }
     
@@ -24,10 +29,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        backdrop-filter: blur(32px);
-        border: 2px solid rgb(150, 242, 174);
-        border-radius:0px 103px;
-        box-shadow: 2px 3px 40px rgb(42, 255, 42);
+        
     }
     
 ul{
@@ -52,16 +54,28 @@ li a:hover{
 <body>
     <nav>
         <div class="nav">
-        <div class="logo">
-            
-    </div>
+       
         <div class="menus">
-            <ul><li><a href="#home">HOME</a></li>
-            <li><a href="#about-us">DASHBORD </a></li>
-            <li><a href="#registration">REGISTER</a></li>
-            <li><a href="#">LOGIN</a></li>
-            <li><a href="#">LOG OUT </a></li>
-        </div></div>
+          
+            {% csrf_token %}
+            <ul>
+
+            {% if user.is_authenticated %}
+                
+                {% csrf_token %}
+                <li><a href="{%  url 'home'%}">HOME</a></li>
+                <li><a href="{% url 'dashboard' %}">DASHBORD </a></li>
+                <li><a href="{% url 'logout'%}">LOG OUT </a></li>
+            {% else %}
+            <li><a href="{% url 'register' %}">REGISTER</a></li>
+            <li><a href="{% url 'login' %}">LOGIN</a></li>
+            {% endif %}
+          
+        </div>
+        <div class="logo">
+            <img src="" alt="" width="50px" height="50px">
+        </div>
+    </div>
     </nav>
     
 

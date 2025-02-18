@@ -1,6 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from regstrapp.forms import userProfileForm,UserForm
-
+from django.contrib.auth import authenticate,login,logout
+from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
@@ -29,4 +31,34 @@ def register(request):
         'registered':registered
     }
     return render(request,'registration.html',context)
+
+def user_login(request):
+    if request.method=='POST':
+       username=request.POST.get('username')
+       password=request.POST.get('password')
+      
+      #authentication 
+       user = authenticate(username=username, password=password)
+       if user:
+              if user.is_active:
+                  login(request,user)
+                  return redirect('home')
+              else:
+                  return HttpResponse('user is not active')
+       else:
+              return HttpResponse('pls check ur creds')
+    return render(request,'login.html')
+
+@login_required(login_url='login')
+def home(request):
+    return render(request,'home.html')
+
+@login_required(login_url='login')
+def user_logout(request):
+    logout(request)
+    return redirect('login')
+
+@login_required(login_url='login')
+def dashboard(request):
+    return render(request,'dashbord.html')
     

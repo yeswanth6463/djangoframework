@@ -1,0 +1,32 @@
+{% include 'base.html'%}
+
+{% block content %}
+<style>
+    .container {
+        margin-top: 150px;
+    }
+    .jumbotron {
+        padding: 2rem 2rem;
+    }
+    .form-group {
+        margin-bottom: 1rem;
+    }
+</style>
+<div class="container">
+    <div class="jumbotron"></div>
+        <h1>LOGIN FORM</h1>
+        <form action="{% url 'login' %}" method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="username">User Name</label>
+                <input type="text" name="username" id="username" class="form-control" placeholder="Enter your username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" class="form-control" placeholder="Enter your password" required>
+            </div>
+            <button type="submit" class="btn btn-primary">LOGIN</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
