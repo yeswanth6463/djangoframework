@@ -1,4 +1,5 @@
 {% include 'base.html' %}  
+{% load static  %}
 {% block content %}
 
 <style>
@@ -9,8 +10,20 @@
 
 <div class="container">
     <div class="jumbotron">
+        <div class="card card-body">
+
+        <form action="">
         <h1>dashboard</h1>
-        <h3>{{ user.username }}'s profile </h3>
+        <h3>username  :  {{ user.username }}'s profile </h3> <br>
+        <h3>phone     :  {{ user.userprofile.phone }}'s profile </h3><br>
+        <h3>email     :  {{ user.email }} </h3> <br>
+        <h3>Address   :  {{ user.userprofile.address }} </h3> <br>
+        <h3>City      :  {{ user.userprofile.city }} </h3> <br>
+        <h3>State     :  {{ user.userprofile.state }}</h3> <br>
+        <h3>zipcode   :  {{ user.userprofile.zipcode }}</h3> <br>
+        </form>
+        <img src="{{ user.userprofile.image.url }}" alt="" width="20px" height="40px">
+    </div>
     </div>
 </div>
  

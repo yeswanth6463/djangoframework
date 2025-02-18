@@ -18,3 +18,9 @@ class userProfileForm(forms.ModelForm):
         model=UserProfile
         fields=['phone','address','city','state','zipcode','image']
     captcha = ReCaptchaField()
+
+
+# class UserEditForm(forms.ModelForm):
+#     class Meta:
+#         model=User
+#         fields=['username','email']
