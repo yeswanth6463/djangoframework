@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from regstrapp.forms import userProfileForm,UserForm
+from regstrapp.forms import userProfileForm,UserForm,UserEditForm
 from django.contrib.auth import authenticate,login,logout
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
@@ -61,4 +61,19 @@ def user_logout(request):
 @login_required(login_url='login')
 def dashboard(request):
     return render(request,'dashbord.html')
+
+@login_required(login_url='login')
+def edit(request):
+    if request.method == 'POST':
+        form = UserEditForm(request.POST,instance=request.user)
+        if form.is_valid():
+            form.save()
+            return redirect('dashboard')
+    else:
+
+        form=UserEditForm(instance=request.user)
+    contxt={
+        'form':form
+    }
+    return render(request,"edit.html",contxt)
     

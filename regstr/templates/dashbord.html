@@ -10,20 +10,30 @@
 
 <div class="container">
     <div class="jumbotron">
-        <div class="card card-body">
+        <div class="row">
+           
+                <div class="col-md-6">
+                    <div class="card card-body">
 
-        <form action="">
-        <h1>dashboard</h1>
-        <h3>username  :  {{ user.username }}'s profile </h3> <br>
-        <h3>phone     :  {{ user.userprofile.phone }}'s profile </h3><br>
-        <h3>email     :  {{ user.email }} </h3> <br>
-        <h3>Address   :  {{ user.userprofile.address }} </h3> <br>
-        <h3>City      :  {{ user.userprofile.city }} </h3> <br>
-        <h3>State     :  {{ user.userprofile.state }}</h3> <br>
-        <h3>zipcode   :  {{ user.userprofile.zipcode }}</h3> <br>
-        </form>
-        <img src="{{ user.userprofile.image.url }}" alt="" width="20px" height="40px">
-    </div>
+                                    <form action="">
+                                    <h1>dashboard</h1>
+                                    <h3>username  :  {{ user.username }}'s profile </h3> <br>
+                                    <h3>phone     :  {{ user.userprofile.phone }}'s profile </h3><br>
+                                    <h3>email     :  {{ user.email }} </h3> <br>
+                                    <h3>Address   :  {{ user.userprofile.address }} </h3> <br>
+                                    <h3>City      :  {{ user.userprofile.city }} </h3> <br>
+                                    <h3>State     :  {{ user.userprofile.state }}</h3> <br>
+                                    <h3>zipcode   :  {{ user.userprofile.zipcode }}</h3> <br>
+                                    <a href="{% url 'edit'  %}" class="btn btn-primary">EDIT</a>
+                                    </form>
+            </div>
+           </div>
+           <div class="col-md-3">
+            <div class="card card-body">
+            <img src="{{ user.userprofile.image.url }}" alt="" width="280px" height="300px">
+                </div>
+        </div>
+</div>
     </div>
 </div>
  
