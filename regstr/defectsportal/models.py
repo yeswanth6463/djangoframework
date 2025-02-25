@@ -28,3 +28,5 @@ class Defectsprofile(models.Model):
     
 def __str__(self):
     return self.defect_name
+
+

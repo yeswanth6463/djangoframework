@@ -10,6 +10,34 @@
     <title>Document</title>
 </head>
 <body>
+    <nav class="navbar navbar-expand-lg navbar-custom fixed-top" style="height: 75px;">
+        <div class="container-fluid"> 
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-2">
+                   
+                    <li class="nav-item"><a class="nav-link" aria-current="page" href="{% url 'home' %}">Home</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'defect' %}">DefectPortal</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Completed</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Pending</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                    </li>
+                </ul>
+                <form class="d-flex" role="search">
+                    <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+                        <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
+                    </svg></a>
+                </form>
+            </div>
+        </div>
+    </nav>
     <div class="container">
         <div class="jambotron">
             <h1>list of defects</h1>
@@ -35,7 +63,7 @@
                             <td>{{ i.defect_type }}</td>
                             <td>{{ i.assigned_by }}</td>
                             <td>{{ i.assigned_to }}</td>
-                            <td>{{ i.description }}</td>
+                            <td><a href="{% url 'desc' id=i.id  %}">more info </a></td>
                             {% if i.priority == 'HIGH' %}
                                 <td>
                                     <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAmxJREFUSEvt1kmojmEUwPHfjViRIbJRZEzmMkQylWJDUjZKEVGSDLeIFZFpYSpJhB0LkWGhTJkpZM5QtkiGlXB5j563Xp/vDp/v6m6c1fv2nOf8z3POec5zarSQ1LQQV33g9vjUgFMdsCSt78LHBnTL2ioHnok9GI3XZQx2xA30TWtPMAqfy+j2wHUswonieil4CG6iLR4h/r+nDZ2wGnMzx7qUQN7gEDbiQ1prjYfol+37ghF4kO8rgtvgLgakxZXYnr5npyh0bqQmwoH5OJX0arE5fYcTw/At/ovgotJBzEsb1mJ9hUW4GHvTniOYk76XYUcRHKENb6MQnmEQvmICLlQIDfUfGIk7KW3P0R1vM4e6oS4/8Ywsn8cTIEJ1IEXjaaGIKuVfwbi0aXkhbZNxPgdvy6pyRVKKwnmHaVlBnK6UVqIfOb2XCiwOEbIOG3LwsawCZ2W5eIE+SSFysbRKcNTN1mQj+kI77MeCHHweE1M+JyXFM9nVmlol+HC6fmEmThxX6yhm5+C45NEwzqYQh2IUVRRXNXIOU5KBCHn0hZPZtZ2eg3diMG5jVVK8mMHHV0PNonip4PxuDMwOdgu1DT0SzQ3+7Qz/wcVwtEioe+MqulZZXNGGx6b+0GiO+6dqrBaagwIePeJxkVxaXPHIv0JMGM0p77P3umdxqikFx72N3P4LCduXc8Ol4HjKYgL5FxLjUTSPX1IKboV96NXM5JdYWBij6p0ym5n7p7lK5+qhaaqIyBSlLmv+w3G/qR5XCg67WwoPSc7ZhDVNhZbLcVP3xiQ6Js1W17L3NWbriuRvTlwRoD7lFgP/BNiEcB+jxU82AAAAAElFTkSuQmCC"/></td>
