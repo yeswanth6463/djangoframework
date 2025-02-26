@@ -4,7 +4,7 @@ from django import forms
 class defectsform(forms.ModelForm):
     class Meta:
         model=Defectsprofile
-        fields=['defects_id',
+        fields=['defect_id',
                 'defect_name',
                 'defect_type',
                 'assigned_by',
@@ -20,7 +20,12 @@ class AddDefectForm(forms.ModelForm):
         
 
 class Defect_Edit_Form(forms.ModelForm):
+    defect_id=forms.CharField(max_length=100,disabled=True)
+    
+    defect_type=forms.CharField(disabled=True)
     class Meta:
         model = Defectsprofile
+        fields='__all__'
+        
         
     

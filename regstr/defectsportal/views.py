@@ -1,5 +1,6 @@
 from django.shortcuts import render,redirect
 from defectsportal.models import Defectsprofile,Defects_screen_shots
+from defectsportal.forms import Defect_Edit_Form,AddDefectForm
 
 from django.contrib.auth.decorators import login_required
 # Create your views here.
@@ -23,8 +24,18 @@ def desc(request, id=0):
     return render(request,"defects/desc.html",{'context':context})
 
 @login_required(login_url='login')
+def add_defect(request):
+    items = AddDefectForm()
+    if request.method == 'POST':
+        items = AddDefectForm(request.POST)
+        if items.is_valid():
+            items.save()
+            return redirect('defect')
+    return render(request, 'defects/add_defects.html', {'items': items})
+
+@login_required(login_url='login')
 def edit(request,id=0):
-    defect = Defect.objects.get(id=id)
+    defect = Defectsprofile.objects.get(id=id)
     form = Defect_Edit_Form(instance=defect)
     if request.method == 'POST':
         form = Defect_Edit_Form(request.POST, instance=defect)
@@ -36,6 +47,6 @@ def edit(request,id=0):
 
 @login_required(login_url='login')
 def delete_defects(request, id=0):
-    defect = Defect.objects.get(id=id)
+    defect = Defectsprofile.objects.get(id=id)
     defect.delete()
     return redirect('defect')
