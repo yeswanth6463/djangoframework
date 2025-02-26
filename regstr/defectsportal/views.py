@@ -12,10 +12,30 @@ def alldefects(request):
 def desc(request, id=0):
     desc=Defectsprofile.objects.get(id=id)
     img=Defects_screen_shots.objects.filter(defect=desc)
-    context={
+    print(f"Number of images: {img.count()}")
+    context = {
+
         'desc':desc,
         'img':img
     }
     
     
     return render(request,"defects/desc.html",{'context':context})
+
+@login_required(login_url='login')
+def edit(request,id=0):
+    defect = Defect.objects.get(id=id)
+    form = Defect_Edit_Form(instance=defect)
+    if request.method == 'POST':
+        form = Defect_Edit_Form(request.POST, instance=defect)
+        if form.is_valid():
+            form.save()
+            return redirect('defect')
+    return render(request, 'defects/edit_defects.html', {'form': form})
+
+
+@login_required(login_url='login')
+def delete_defects(request, id=0):
+    defect = Defect.objects.get(id=id)
+    defect.delete()
+    return redirect('defect')

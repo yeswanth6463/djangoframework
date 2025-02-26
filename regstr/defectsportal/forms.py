@@ -1,4 +1,5 @@
 from defectsportal.models import Defectsprofile
+from django import forms
 
 class defectsform(forms.ModelForm):
     class Meta:
@@ -11,3 +12,15 @@ class defectsform(forms.ModelForm):
                 'description',
                 'priority'
                 ]
+        
+class AddDefectForm(forms.ModelForm):
+    class Meta:
+        model = Defectsprofile
+        fields='__all__'
+        
+
+class Defect_Edit_Form(forms.ModelForm):
+    class Meta:
+        model = Defectsprofile
+        
+    

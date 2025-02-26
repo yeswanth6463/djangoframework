@@ -88,6 +88,9 @@
                         <th>Defect Type</th>
                         <th>Assigned BY</th>
                         <th>Assigned To</th>
+                        <th>Defects status</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
                         <th>Description</th>
                         <th>Priority</th>
                         
@@ -102,7 +105,10 @@
                             <td>{{ i.defect_type }}</td>
                             <td>{{ i.assigned_by }}</td>
                             <td>{{ i.assigned_to }}</td>
-                            <td><a href="{% url 'desc' id=i.id  %}">more info </a></td>
+                            <td>{{i.status}}</td>
+                            <td><a href="{% url 'edit' id=i.id %}"><i class='bx bx-edit'></i></a></td>
+                            <td><a href="{% url 'deletes' id=i.id %}"><i class='bx bxs-trash'></i></a></td>
+                            <td><a href="{% url 'desc' id=i.id %}">more info</a></td>
                             {% if i.priority == 'HIGH' %}
                                 <td>
                                     <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAmxJREFUSEvt1kmojmEUwPHfjViRIbJRZEzmMkQylWJDUjZKEVGSDLeIFZFpYSpJhB0LkWGhTJkpZM5QtkiGlXB5j563Xp/vDp/v6m6c1fv2nOf8z3POec5zarSQ1LQQV33g9vjUgFMdsCSt78LHBnTL2ioHnok9GI3XZQx2xA30TWtPMAqfy+j2wHUswonieil4CG6iLR4h/r+nDZ2wGnMzx7qUQN7gEDbiQ1prjYfol+37ghF4kO8rgtvgLgakxZXYnr5npyh0bqQmwoH5OJX0arE5fYcTw/At/ovgotJBzEsb1mJ9hUW4GHvTniOYk76XYUcRHKENb6MQnmEQvmICLlQIDfUfGIk7KW3P0R1vM4e6oS4/8Ywsn8cTIEJ1IEXjaaGIKuVfwbi0aXkhbZNxPgdvy6pyRVKKwnmHaVlBnK6UVqIfOb2XCiwOEbIOG3LwsawCZ2W5eIE+SSFysbRKcNTN1mQj+kI77MeCHHweE1M+JyXFM9nVmlol+HC6fmEmThxX6yhm5+C45NEwzqYQh2IUVRRXNXIOU5KBCHn0hZPZtZ2eg3diMG5jVVK8mMHHV0PNonip4PxuDMwOdgu1DT0SzQ3+7Qz/wcVwtEioe+MqulZZXNGGx6b+0GiO+6dqrBaagwIePeJxkVxaXPHIv0JMGM0p77P3umdxqikFx72N3P4LCduXc8Ol4HjKYgL5FxLjUTSPX1IKboV96NXM5JdYWBij6p0ym5n7p7lK5+qhaaqIyBSlLmv+w3G/qR5XCg67WwoPSc7ZhDVNhZbLcVP3xiQ6Js1W17L3NWbriuRvTlwRoD7lFgP/BNiEcB+jxU82AAAAAElFTkSuQmCC"/></td>

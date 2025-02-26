@@ -12,6 +12,11 @@ DEFECTS_PRIORITY=[
     ('LOW','low'),
 ]
 
+DEFECTS_STATUS=[
+    ('COMPLETED','completed'),
+    ('NOT COMPLETED','not completed')
+]
+
 
 
 
@@ -25,13 +30,16 @@ class Defectsprofile(models.Model):
     assigned_to=models.CharField(max_length=100)
     description=models.TextField()
     priority=models.CharField(max_length=100,choices=DEFECTS_PRIORITY,default='HIGH')
+    status=models.CharField(max_length=100,choices=DEFECTS_STATUS,default='COMPLETED')
     
-def __str__(self):
-    return self.defect_name
+    def __str__(self):
+        return self.defect_name
 
 class Defects_screen_shots(models.Model):
     defect=models.ForeignKey(Defectsprofile,related_name='defect',on_delete=models.CASCADE)
     defect_image = models.ImageField(
         upload_to='defectsimg/',blank=True,null=True
     )
+    
+    
 

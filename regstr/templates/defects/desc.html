@@ -54,7 +54,8 @@
             </dl>
             <h2>Images</h2>
             {% for i in context.img %}      
-                <img src="{{ i.img.url }}" class="card-img-top" alt="no-img">
+                <img src="{{ i.defect_image.url }}" class="card-img-top" alt="no-img">
+
             {% endfor %}
             
 
