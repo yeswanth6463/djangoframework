@@ -64,8 +64,10 @@ li a:hover{
                 
                 {% csrf_token %}
                 <li><a href="{%  url 'home'%}">HOME</a></li>
+                <li><a href="{% url 'defects' %}">DEFECTS PORTAL</a></li>
                 <li><a href="{% url 'dashboard' %}">DASHBORD </a></li>
                 <li><a href="{% url 'logout'%}">LOG OUT </a></li>
+               
             {% else %}
             <li><a href="{% url 'register' %}">REGISTER</a></li>
             <li><a href="{% url 'login' %}">LOGIN</a></li>

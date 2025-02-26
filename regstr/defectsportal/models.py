@@ -29,4 +29,9 @@ class Defectsprofile(models.Model):
 def __str__(self):
     return self.defect_name
 
+class Defects_screen_shots(models.Model):
+    defect=models.ForeignKey(Defectsprofile,related_name='defect',on_delete=models.CASCADE)
+    defect_image = models.ImageField(
+        upload_to='defectsimg/',blank=True,null=True
+    )
 

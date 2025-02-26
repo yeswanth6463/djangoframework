@@ -1,19 +1,65 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <title>Document</title>
-</head>
-<body>
-    <div class="container">
-        <div class="jambotron">
+{% extends 'defects/defects.html' %}
 
-            <h1>defects description</h1>
-            {{ desc.defect_name}}
+
+
+
+{% block contents %}
+    <div class="container">
+    <div class="container">
+        <style>
+            body {
+                background-color: #f8f9fa;
+            }
+            .jumbotron {
+                margin-top: 10px;
+                background-color: #738ba3;
+                padding: 2rem 1rem;
+                border-radius: 20px;
+                color: white;
+                font-size: 1.2rem;
+            }
+            h1 {
+                color: #edf0f3;
+            }
+            dt {
+                font-weight: bold;
+            }
+            dd {
+                margin-bottom: 1rem;
+            }
+        </style>
+        <div class="jumbotron">
+            <h1>Defect Description</h1>
+            <br><br>
+            <dl class="row">
+
+                <dt class="col-sm-3">Defect Name</dt>
+                <dd class="col-sm-9"> {{ context.desc.defect_id }} </dd>
+              
+                <dt class="col-sm-3">Defect Type</dt>
+                <dd class="col-sm-9"><p> {{ context.desc.defect_type }} </p></dd>
+              
+                <dt class="col-sm-3">Assigned_by</dt>
+                <dd class="col-sm-9"> {{ context.desc.assigned_by}} </dd>
+              
+                <dt class="col-sm-3 ">Assigned_to</dt>
+                <dd class="col-sm-9"> {{ context.desc.assigned_to}}  </dd>
+              
+                <dt class="col-sm-3">Description</dt>
+                <dd class="col-sm-9"><p> {{ context.desc.description }} </p></dd>
+
+                <dt class="col-sm-3">Priority</dt>
+                <dd class="col-sm-9"><p>  {{ context.desc.priority }} </p></dd>
+
+            </dl>
+            <h2>Images</h2>
+            {% for i in context.img %}      
+                <img src="{{ i.img.url }}" class="card-img-top" alt="no-img">
+            {% endfor %}
+            
+
         </div>
     </div>
 </body>
-</html>
+
+{% endblock %}

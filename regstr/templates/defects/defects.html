@@ -8,36 +8,75 @@
 <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
     <title>Document</title>
+    <style>
+        .nav{
+            height:76px;
+            width: 100%;
+            display: flex;
+            flex-wrap:wrap ;
+            justify-content: space-between;
+            top: 0px;
+            position:fixed;
+            backdrop-filter: blur(32px);
+            border: 0.5px solid rgb(80, 83, 81);
+            box-shadow: 2px 3px 40px rgb(0, 0, 0);
+        }
+        .logo,img{
+            
+            border-radius: 50%;
+        
+        }
+        
+        .menus{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+        }
+        
+    ul{
+        list-style: none;
+        display: flex;
+        justify-content:space-around;
+        gap: 50px;
+    }
+    
+    li a{
+        text-decoration: none;
+        color: rgb(0, 0, 0);
+        font-size: 1.2rem;
+        margin: 25px;
+    }
+    
+    li a:hover{
+        color: rgb(149, 255, 43);
+    }
+    body{
+        margin-top: 150px;
+    }
+    </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-custom fixed-top" style="height: 75px;">
-        <div class="container-fluid"> 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-2">
-                   
-                    <li class="nav-item"><a class="nav-link" aria-current="page" href="{% url 'home' %}">Home</a>
-                    </li>
-                    <li class="nav-item"><a class="nav-link" href="{% url 'defect' %}">DefectPortal</a></li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Completed</a>
-                    </li>
-                    
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Pending</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'logout' %}">Logout</a>
-                    </li>
-                </ul>
-                <form class="d-flex" role="search">
-                    <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
-                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
-                        <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
-                    </svg></a>
-                </form>
-            </div>
+    <nav>
+        <div class="nav">
+       
+        <div class="menus">
+          
+            {% csrf_token %}
+            <ul>
+                <li><a href="{%  url 'home'%}">HOME</a></li>
+                <li><a href="{% url 'defects' %}">Defects </a></li>
+                <li><a href="#">LOG OUT </a></li>
+            <li><a href="#">REGISTER</a></li>
+            <li><a href="#">LOGIN</a></li>
+          
         </div>
+        <div class="logo">
+            <img src="" alt="" width="50px" height="50px">
+        </div>
+    </div>
     </nav>
+    {% block contents %}
     <div class="container">
         <div class="jambotron">
             <h1>list of defects</h1>
@@ -80,6 +119,7 @@
                 </tbody>
               </table>
         </div>
+        {% endblock contents %}
     </div>
 </body>
 </html>
