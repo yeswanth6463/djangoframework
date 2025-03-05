@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load  %}
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <h1> list of the company </h1>
+        <ol>
+            {% for i in company_list %}
+            <li><a href="{{ i.id }}">
+                <h3>{{i.cmp_name}}</h3>
+            </a></li>
+          
+            {% endfor %}
+        </ol>
+
+    </body>
+</html>
