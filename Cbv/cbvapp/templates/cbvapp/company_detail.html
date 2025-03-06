@@ -1,14 +1,75 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>{{ company_details.cmp_name}} company details </h1>
-    <h2>ceo of this company::   {{ company_details.cmp_ceo}} </h2>
-    <h2>origin of the company:: {{ company_details.origin}} </h2>
+{% extends "index.html" %}
+{% load static  %}
+{% block content %}
 
+<style>
+    h1,h2{
+        color: white;
+    }
+    
+    .row{
+        display: flex;
+        flex-direction: row;
+    }
+    .card{
+        background-color: #79445d;
+        box-shadow: 2px 3px 16px black;
+    }
+    body{
+        background-color: #e02768;
+    }
+    li{
+        list-style: none;
+        font-size: 1.3rem;
+        color: aliceblue;
+
+    }
+    img{
+        position: absolute;
+        top: 0;
+        left: 560px;
+    }
+ 
+</style>
+
+<body>
+    <div class="container">
+        <div class="jambotron">
+            <div class="card card-body">
+                <img src="{{ company_details.image.url }}" alt="" width="40px" height="40px">
+                <h1>{{ company_details.cmp_name }} company details </h1>
+                <h2>CEO of this company: {{ company_details.cmp_ceo }}</h2>
+                <h2>Origin of the company: {{ company_details.origin }}</h2>
+                
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <div class="container">
+        <div class="card card-body">
+            <h2>Product List:</h2>
+            <ul>
+                <div class="row">
+                {% for product in product_list %}
+                    <div class="col-md-3">
+                        <div class="card card-body">
+                            <li>
+                                <strong>Name:</strong> {{ product.product_name }} <br>
+                                <strong>Price:</strong> {{ product.product_price }} <br>
+                                <strong>Color:</strong> {{ product.product_color }} <br>
+                                <strong>Fuel Type:</strong> {{ product.fuletype }} <br>
+                                <strong>Seat Capacity:</strong> {{ product.seatcapasity }} <br>
+                            </li>
+                        </div>
+                    </div>
+                {% empty %}
+                    <li>No products available for this company.</li>
+                {% endfor %}
+            </div>
+            </ul>
+        </div>
+    </div>
+    
 </body>
-</html>
+{% endblock content %}

@@ -1,21 +1,58 @@
-<!DOCTYPE html>
-<html lang="en">
-{% load  %}
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
-    </head>
-    <body>
-        <h1> list of the company </h1>
-        <ol>
-            {% for i in company_list %}
-            <li><a href="{{ i.id }}">
-                <h3>{{i.cmp_name}}</h3>
-            </a></li>
-          
-            {% endfor %}
-        </ol>
+{% extends "base.html" %}
+{% load static %}
 
-    </body>
-</html>
+{% block content %}
+<style>
+    .contain{
+        width: 80%;
+    }
+    li{
+        font-size: 2rem;
+
+    
+    }
+    a{
+        text-decoration: none;
+        color:#493D9E ;
+
+    }
+    .card{
+        background-color: #bcaefc;
+        transition: all .7s ease ;
+    }
+    .card:hover{
+        background-color: #6bad9f ;
+    }
+    body{
+        background-color: #e0dff0;
+    }
+</style>
+
+<style>
+
+</style>
+    <h1>List of Companies</h1>
+    <div class="contain">
+      
+            <ol>
+                <div class="row">
+                {% for i in company_list %}
+               
+                    <div class="col-md-3">
+                        <div class="card card-body ">
+                        <li><a href="{% url 'company' i.id %}">
+
+                                <img src="{{i.image.url}}" alt="" width="40px" height="40px">
+                                <h3>{{ i.cmp_name }}</h3> 
+                               
+                            </a></li>
+                        </div>
+                    </div>
+              
+                {% endfor %}
+            </div>
+            </ol>
+        
+    </div>
+
+{% endblock content %}

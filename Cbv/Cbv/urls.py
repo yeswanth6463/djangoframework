@@ -16,10 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
+from django.conf.urls.static import static
 from cbvapp import views
+from django.conf import settings
+
 urlpatterns = [
-    path('',views.htmlview.as_view()),
-    path('company/',include('cbvapp.urls')),
-    
+    path('',views.htmlview.as_view(), name='index'),
+    path('company/',include('cbvapp.urls'),name='company_list'),
     path('admin/', admin.site.urls),
-]
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

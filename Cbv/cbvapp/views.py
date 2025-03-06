@@ -13,11 +13,18 @@ class htmlview(TemplateView):
 
 class AllcompaniesList(ListView):
     model = company
-    # context_object_name='allcompanies'
-    #company_list
+    context_object_name = 'company_list'
 
+    # context_object_name='allcompanies'
 class CompanyDetails(DetailView):
     model = company
-    context_object_name='company_details'
+    context_object_name = 'company_details'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['product_list'] = self.object.company.all()  # Fetch related products
+        return context
+
     
     
+    #how to get data from another model

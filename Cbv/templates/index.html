@@ -1,12 +1,49 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base.html" %}
+{% block content %}
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    
+    <style>
+        .container{
+            text-align: center;
+        }
+        a{
+            text-decoration: none;
+            font-size: 4rem;
+            color: #E9762B;
+            transition: all .5s ease;
+            position: relative; /* Added for positioning the underline */
+        }
+        a::before{
+            content: ""; /* Added to create the underline */
+            position: absolute; /* Positioning the underline */
+            left: 0;
+            bottom: 0; /* Position it at the bottom of the text */
+            height: 2px; /* Height of the underline */
+            width: 0; /* Start with 0 width */
+            background-color: #0D4715; /* Color of the underline */
+            transition: width 0.5s ease; /* Animate the width */
+        }
+        a:hover::before {
+            width: 100%; /* Full width on hover */
+        }
+        a::after{
+            text-decoration: none;
+        }
+        a:hover{
+            color: #0846088e;
+        }
+        
+    </style>
 </head>
 <body>
-    <h1>heloo class based view </h1>
+    <div class="container">
+        <div class="row">
+            <h3><a href="{% url 'company_list' %}"> COMPANY LIST </a></h3>
+        </div>
+       
+    </div>
 </body>
-</html>
+
+{% endblock content %}
