@@ -1,5 +1,7 @@
 from django.db import models
+from django.urls import reverse
 from django.contrib.auth.models import User
+
 
 # Create your models here.
 class company(models.Model):
@@ -10,6 +12,9 @@ class company(models.Model):
 
     def __str__(self):
         return self.cmp_name
+    
+    def get_absolute_url(self):
+        return reverse('company', kwargs={"pk":self.pk})
     
 class product(models.Model):
     cmp=models.ForeignKey(company,related_name='company', on_delete=models.CASCADE)
@@ -22,3 +27,6 @@ class product(models.Model):
     def __str__(self):
         return self.product_name
     
+class productimages(models.Model):
+    product=models.ForeignKey(product,related_name='product', on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='productimg/',blank=True,null=True)

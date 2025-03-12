@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<div class="container">
+    <div class="jambotron">
+        <div class="card card-body">
+            {% if not form.instance.pk %}
+            <h1>ADD new company</h1>
+            <form action="" method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit" class="btn btn-success" value="ADD">
+            </form>
+
+        {% else %}
+            <h1>update new company</h1>
+            <form action="" method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit" class="btn btn-success" value="update">
+            </form>
+            
+        {% endif %}
+        </div>
+   
+    </div>
+</div>
+
+{% endblock %}

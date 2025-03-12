@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<body>
+    <div class="container">
+        <div class="jambotron">
+            <div class="card card-body">
+                <form action="" method="post">
+                    <h1>
+                        product name:{{ product.product_name }}  
+                    </h1>
+                    <h1>
+                        product price: {{product.product_price}}
+                    </h1>
+                    <h1>loan amount</h1><input type="number" name="loan_amount" id="loan_amount"><br>
+                    <br>
+                    <h1>total tenure</h1><input type="number" name="total_tenure" id="total_tenure"><br>
+                    <br>
+                    <h1>rate of interest</h1>
+                    <input type="number" name="interest_rate" id="interest_rate"><br>
+                    <input type="submit" value="calculate" class="btn btn-danger">
+                </form>

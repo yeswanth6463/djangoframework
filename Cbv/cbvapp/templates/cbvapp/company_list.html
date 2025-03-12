@@ -3,9 +3,7 @@
 
 {% block content %}
 <style>
-    .contain{
-        width: 80%;
-    }
+   
     li{
         font-size: 2rem;
 
@@ -19,6 +17,7 @@
     .card{
         background-color: #bcaefc;
         transition: all .7s ease ;
+        margin: 40px;
     }
     .card:hover{
         background-color: #6bad9f ;
@@ -31,27 +30,41 @@
 <style>
 
 </style>
-    <h1>List of Companies</h1>
-    <div class="contain">
-      
+  
+    <div class="container">
+        <div class="jambotron">
+            <h1>List of Companies</h1>
             <ol>
                 <div class="row">
                 {% for i in company_list %}
                
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <div class="card card-body ">
-                        <li><a href="{% url 'company' i.id %}">
+                        <a href="{% url 'company' i.id %}">
 
-                                <img src="{{i.image.url}}" alt="" width="40px" height="40px">
+                                {% if i.image %}
+                                    <img src="{{ i.image.url }}" alt="" width="40px" height="40px">
+                                {% else %}
+                                    <img src="{% static 'path/to/default/image.png' %}" alt="Default Image" width="40px" height="40px">
+                                {% endif %}
+
                                 <h3>{{ i.cmp_name }}</h3> 
+                                <h3> origin: {{i.origin}}   </h3>
                                
-                            </a></li>
+                            </a>
+                            
                         </div>
                     </div>
+                    <br>
+                    <br>
               
                 {% endfor %}
             </div>
+            <br><br>
             </ol>
+        </div>
+      
+           
         
     </div>
 
