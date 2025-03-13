@@ -29,19 +29,40 @@ def emi_cals(request, pk):  # Accept pk as an argument
     user_data = request.user  # Get user data
 
     if request.method == 'POST':
-        loan_amount = request.POST.get('loan_amount')
-        total_tenure = request.POST.get('total_tenure')
-        interest_rate = request.POST.get('interest_rate')
+        try:
+            loan_amount = float(request.POST.get('loan_amount'))
+            total_tenure = int(request.POST.get('total_tenure'))
+            interest_rate = float(request.POST.get('interest_rate'))
+        except ValueError:
+            return render(request, 'emi.html', {
+                'product': product_instance,
+                'user': user_data,
+                'error_message': 'Please enter valid numeric values for loan amount, total tenure, and interest rate.'
+            })
+
         
+        # Validate loan amount against product price
+        product_price = product_instance.product_price
+        if loan_amount > product_price:
+            return render(request, 'emi.html', {
+                'product': product_instance,
+                'user': user_data,
+                'error_message': 'Loan amount cannot exceed the product price.'
+            })
+
         # Perform calculations here (e.g., EMI calculation)
-        # For now, just pass the values to the template
+        r = interest_rate / 12 / 100  # Convert annual interest rate to monthly and percentage
+        n = total_tenure * 12
+        emi_amount = loan_amount * r * (1 + r) ** n / ((1 + r) ** n - 1)
+    
+        # Pass the values to the template
         return render(request, 'emi.html', {
             'product': product_instance,
             'user': user_data,
             'loan_amount': loan_amount,
             'total_tenure': total_tenure,
-            'interest_rate': interest_rate
+            'interest_rate': interest_rate,
+            'emi_amount': emi_amount
         })
         
-
     return render(request, 'emi.html', {'product': product_instance, 'user': user_data})

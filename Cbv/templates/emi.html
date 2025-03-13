@@ -2,22 +2,33 @@
 {% load static %}
 
 {% block content %}
-<body>
     <div class="container">
         <div class="jambotron">
             <div class="card card-body">
                 <form action="" method="post">
+                    {% csrf_token %}
                     <h1>
-                        product name:{{ product.product_name }}  
+                        product name: {{ product.product_name }}  
                     </h1>
                     <h1>
-                        product price: {{product.product_price}}
+                        product price: {{ product.product_price }}
                     </h1>
-                    <h1>loan amount</h1><input type="number" name="loan_amount" id="loan_amount"><br>
+                    <h1>loan amount</h1><input type="number" name="loan_amount" id="loan_amount" value="{{ loan_amount }}"><br>
                     <br>
-                    <h1>total tenure</h1><input type="number" name="total_tenure" id="total_tenure"><br>
+                    <h1>total tenure</h1><input type="number" name="total_tenure" id="total_tenure" value="{{ total_tenure }}"><br>
                     <br>
                     <h1>rate of interest</h1>
-                    <input type="number" name="interest_rate" id="interest_rate"><br>
+                    <input type="text" name="interest_rate" id="interest_rate" value="{{ interest_rate }}"><br>
+                    <br>
+                    <br>
                     <input type="submit" value="calculate" class="btn btn-danger">
+                    {% if emi_amount %}
+                        <h1>{{ emi_amount }}</h1>
+                    {% else %}
+                        <h1>No EMI amount calculated.</h1>
+                    {% endif %}
                 </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
