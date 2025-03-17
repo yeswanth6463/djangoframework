@@ -1,0 +1,23 @@
+{% include 'cbvapp/navbar.html' %}
+
+{% block content %}
+    <div class="container">
+        <div class="jumbotron">
+            {% if not form.instance.pk %}
+                <h1>add new company here</h1>
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <input type="submit" class="btn btn-success" value="ADD">
+                </form>
+            {% else %}
+                <h1>update company details</h1>
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <input type="submit" class="btn btn-success" value="Update">
+                </form>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

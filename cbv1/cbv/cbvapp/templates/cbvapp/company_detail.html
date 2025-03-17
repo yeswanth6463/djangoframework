@@ -1,0 +1,41 @@
+{% include 'cbvapp/navbar.html' %}
+
+{% block content %}
+    <div class="container">
+        <div class="jumbotron">
+            <h1>Company Details</h1><br>
+            <h3>Name :- {{ company_details.name }}</h3>
+            <p>CEO :- {{ company_details.ceo }}</p>
+            <p>Origin Country :- {{ company_details.origin }}</p>
+            <a class="btn btn-primary" href="{% url 'edit' pk=company_details.id %}">Edit</a>
+            <a class="btn btn-danger" href="{% url 'delete' pk=company_details.id %}">Delete</a>
+
+            <hr>
+            <h3>List of {{ company_details.name }} products</h3><br>
+            <div class="row">
+                {% for i in company_details.companies.all %}
+                    <div class="col-md-6">
+                        <div class="card text-bg-light d-flex flex-column align-items-center text-center p-2">
+                            {% if i.product_img %}
+                                <img src="{{ i.product_img.url }} " alt="no img" width="60">
+                            {% endif %}
+                            <div class="card-body">
+                                <p>Name : {{ i.product_name }}</p>
+                                <p>Color : {{ i.color }}</p>
+                                <p>Fuel Type : {{ i.fuel_type }}</p>
+                                <p>Seat Capacity : {{ i.seat_capacity }}</p>
+                                <p>Price : {{ i.price }}</p>
+                            </div>
+                            <!-- <a href="#">EMI<i class='bx bxs-help-circle'></i></a> -->
+                    
+                            <a href="{% url 'emi_calculator' %}?price={{ i.price }}&product_name={{ i.product_name }}" class="btn btn-success">
+                                Calculate EMI <i class='bx bxs-help-circle'></i>
+                            </a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

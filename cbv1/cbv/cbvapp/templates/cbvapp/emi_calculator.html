@@ -1,0 +1,51 @@
+{% include 'cbvapp/navbar.html' %}
+
+{% block content %}
+    <div class="container">
+        <div class="jumbotron">
+            <h1>EMI Calculator</h1><br>
+
+            {% if product_name %}
+                <h3>Product: {{ product_name }}</h3>
+            {% endif %}
+            {% if product_price %}
+                <p>Product Price: ₹{{ product_price }}</p>
+            {% endif %}
+
+            <form method="post">
+                {% csrf_token %}
+
+                <input type="hidden" name="product_name" value="{{ product_name }}">
+                <input type="hidden" name="product_price" value="{{ product_price }}">
+
+                <div class="form-group">
+                    <label>Loan Amount (₹ {{ product_price }} ):</label>
+                    <input type="number" name="loan_amount" class="form-control" 
+                           value="{{ product_price }}" min="1" max="{{ product_price }}" required>
+                </div>
+                <div class="form-group">
+                    <label>Interest Rate (% per annum):</label>
+                    <input type="number" name="interest_rate" class="form-control" step="0.01" required>
+                </div>
+                <div class="form-group">
+                    <label>Loan Tenure (Years):</label>
+                    <input type="number" name="tenure" class="form-control" required><br>
+                </div>
+                <button type="submit" class="btn btn-primary">Calculate EMI</button>
+            </form>
+
+            {% if emi %}
+                <hr>
+                <h3>EMI Calculation Result:</h3>
+                <p><strong>Product:</strong> {{ product_name }}</p>
+                <p><strong>Product Price:</strong> ₹{{ product_price }}</p>
+                <p><strong>Loan Amount:</strong> ₹{{ loan_amount }}</p>
+                <p><strong>Rate of Interest:</strong> {{ interest_rate }}% per annum</p>
+                <p><strong>Total Tenure:</strong> {{ tenure }} years</p>
+                <p><strong>Monthly EMI:</strong> ₹{{ emi }}</p>
+            {% elif error %}
+                <p class="text-danger">{{ error }}</p>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
