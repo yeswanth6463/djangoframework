@@ -23,5 +23,8 @@ from django.conf import settings
 urlpatterns = [
     path('',views.htmlview.as_view(), name='index'),
     path('company/',include('cbvapp.urls'),name='company_list'),
+    path('api/',include('api_app.urls')),
+    
+    
     path('admin/', admin.site.urls),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

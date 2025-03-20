@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'cbvapp',
+    'api_app',
 ]
 
 MIDDLEWARE = [

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%; /* Ensure body and html take full height */
+            width: 100%;
+        }
+
+        .container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1; /* Place image behind content */
+        }
+
+        h1 {
+            position: absolute;
+            top: 20px; /* Distance from the top */
+            left: 20px; /* Distance from the right */
+            color: #f90c0c;
+            font-size: 2rem;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1><marquee behavior="" direction="">Wellcome to Car Zone</marquee></h1>
+    <img src="https://i.pinimg.com/736x/9b/7c/e1/9b7ce19a96b3be3d382c41a618d61c5e.jpg" alt="Car Image">
+</div>
+
+</body>
+</html>

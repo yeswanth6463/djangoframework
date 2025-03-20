@@ -1,0 +1,41 @@
+{% include 'cbvapp/root.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="jumbotron">
+        <h2>EMI Calculator for {{ product.product_name }}</h2>
+        <p>Product Price: ₹{{ product.price }}</p>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label>Loan Amount:</label>
+                <input type="number" step="0.01" name="loan_amount" class="form-control" 
+                       value="{{ product.price }}" min="1" required>
+            </div>
+            <div class="form-group">
+                <label>Annual Interest Rate (%):</label>
+                <input type="number" step="0.01" name="interest_rate" class="form-control" 
+                       min="0" required>
+            </div>
+            <div class="form-group">
+                <label>Tenure (in years):</label>
+                <input type="number" name="tenure" class="form-control" 
+                       min="1" required>
+            </div>
+            <button type="submit" class="btn btn-primary mt-2">Calculate EMI</button>
+        </form>
+        
+        {% if emi is not None %}
+            <div class="alert alert-success mt-3">
+                <strong>Monthly EMI:</strong> ₹{{ emi|floatformat:2 }} per month
+            </div>
+        {% endif %}
+
+        {% if error_message %}
+            <div class="alert alert-danger mt-3">
+                {{ error_message }}
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

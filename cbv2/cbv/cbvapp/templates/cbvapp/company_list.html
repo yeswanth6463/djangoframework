@@ -1,0 +1,27 @@
+{% include 'cbvapp/root.html' %}
+
+{% block content %}
+    <div class="container">
+        <div class="jumbotron">
+            <h1>List of all Companies</h1><br>
+            <div class="row">
+                {% for i in Companylist %}
+                    <div class="col-md-4 col-sm-6 mb-3">
+                        <div class="card text-bg-light h-100 d-flex flex-column align-items-center text-center p-2">
+                            {% if i.logo %}
+                                <img src="{{ i.logo.url }}" alt="no img" width="60">
+                            {% else %}
+                                <p>No image</p>
+                            {% endif %}
+                            <div class="card-body">
+                                <h5 class="card-title"><a href="{{ i.id }}">{{ i.name }}</a></h5>
+                                <p class="card-text">{{ i.origin }}</p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    
+{% endblock %}
