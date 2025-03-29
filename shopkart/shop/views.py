@@ -1,4 +1,4 @@
-from django.shortcuts import render ,redirect
+from django.shortcuts import render ,redirect ,HttpResponse
 from . models import Category,Product
 from django.contrib import messages
 # Create your views here.
@@ -19,3 +19,6 @@ def collectionsView(request,name):
     else:
         messages.warning(request,"No such Catagory Found")
         return redirect('collections')
+
+def product_details(request,cnmae,pname):
+    return HttpResponse("product details")
