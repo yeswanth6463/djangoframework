@@ -11,8 +11,36 @@ Register | online shopping
         <div class="col-12">
             
 <h1>register</h1>
+
         </div>
     </div>
+    <section class="py-4 my-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-6">
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        <div class="mb-4">
+                            {{form.username}}
+                        </div>
+                        <div class="mb-4">
+                            {{form.email}}
+                        </div>
+                        <div class="mb-4">
+                            {{form.password1}}
+                        </div>
+                        <div class="mb-4">
+                            {{form.password2}}
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">
+                            Register
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
    
 </div>
 

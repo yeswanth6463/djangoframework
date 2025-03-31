@@ -9,7 +9,38 @@ SHOPKART | online shopping
 <div class="container  my-5 ">
     <div class="row">
         <div class="col-12">
-            <h1> home</h1>
+            <h4 class="mb-3">
+                Trending products
+        </h4>
+            {% for i in product %}
+            <div class="col-md-4 col-lg-3">
+                    <div class="card my-3">
+                            <img src="{{ i.product_image.url  }}" 
+
+                            class="card-image-top" alt="Categories" width="fit-content" height="400px">
+                            <a href="{% url 'product_details' i.category.name i.name %}" style="text-decoration: none;">
+
+
+                            <div class="card-body">
+                                    <h5 class="card-title text-primary"> {{ i.name }}</h5>
+                                    <p class="card-text"><span class="float-start old_price"
+                                        id=oldprice ><s>
+                                       Rs. {{i.original_price | stringformat:'d'     }} </s>
+                                    </span>
+                                <span class="float-end new_price" id="newprice">Rs.
+                                    {{i.selling_price | stringformat:'d'}}
+                                </span> 
+                                   
+                                </p>
+
+                                
+                                   
+                            </div>
+                            </a>
+
+                    </div>
+            </div>
+            {% endfor %}
         </div>
     </div>
    
