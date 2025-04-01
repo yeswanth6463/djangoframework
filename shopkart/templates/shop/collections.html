@@ -3,6 +3,7 @@
 Register | online shopping
         {% endblock title %}
 {% block content %}
+{% include 'shop/inc/message.html' %}
 <section class="py-5 text-center container " style="margin-top: 70px;">
         <div class="row py-lg-5">
                 <div class="col-lg-6 col-md-8 mx-auto">
@@ -11,8 +12,8 @@ Register | online shopping
                                 our most popular product based on sales. Update hourly.
                         </p>
                         <p>
-                                <a href="#" class="btn btn-primary my-2">Already user</a>
-                                <a href="#" class="btn btn-primary my-2">Register</a>
+                                <a href="{% url 'login' %}" class="btn btn-primary my-2">Already user</a>
+                                <a href="{% url 'collec' %}"class="btn btn-primary my-2">Register</a>
                         </p>
 
                 </div>

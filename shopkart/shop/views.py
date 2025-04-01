@@ -8,9 +8,19 @@ def home(request):
     return render(request,'shop/index.html',{'product':product})
     
     
+def login_page(request):
+    
+    return render(request,"shop/login.html")
+    
 
 def register(request):
     form=CustomerForm()
+    if request.method=='POST':
+        form=CustomerForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request,'Account created successfully')
+            return redirect('/login')
     return render(request, 'shop/register.html', {'form':form})
 
 def collections(request):
