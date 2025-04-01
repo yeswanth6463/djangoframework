@@ -2,15 +2,36 @@ from django.shortcuts import render ,redirect ,HttpResponse
 from . models import Category,Product
 from .form import CustomerForm
 from django.contrib import messages
+from django.contrib.auth import authenticate,login,logout
 # Create your views here.
 def home(request):
     product=Product.objects.filter(trending=True)
     return render(request,'shop/index.html',{'product':product})
     
     
+def logout_page(request):
+    if request.user.is_authenticated:
+        logout(request)
+        messages.success(request,"Logged out Successfully")
+    return redirect('/')
+
 def login_page(request):
-    
-    return render(request,"shop/login.html")
+      if request.user.is_authenticated:
+          return redirect('/')
+      else:
+        if request.method == 'POST':
+            username = request.POST.get('username')
+            password = request.POST.get('password')
+            user = authenticate(request, username=username, password=password)
+            if user is not None:
+                login(request, user)
+                messages.error(request, 'login successfully')
+                return redirect('/')
+            else:
+                messages.error(request, 'Invalid username or password')
+                return redirect('login')
+        
+        return render(request,"shop/login.html")
     
 
 def register(request):
