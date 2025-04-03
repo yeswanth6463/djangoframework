@@ -43,7 +43,11 @@ SHOPKART | online shopping
                 <div class="my-3">
                     {% if product.quantity > 0 %}
                     <p>
-                        
+                        <div class="input-group" style="width: 150px;">
+                            <button class="input-group-text bg-success text-light" id="btn-minus"><i class="fa fa-minus"></i></button>
+                            <input type="number" class="form-control text-center " name="qty" value="1" id="txtQty" >
+                            <button class="input-group-text bg-success text-light" id="btn-plus"><i class="fa fa-plus"></i>
+                        </div>
                     </p>
 
                     <button class="btn btn-primary">
@@ -65,7 +69,27 @@ SHOPKART | online shopping
         </div>
 </div>
 </section>
+<script>
+    document.addEventListener("DOMContentLoaded",function(event){
+        const btnplus = document.getElementById('btn-plus');
+        const btnminus = document.getElementById('btn-minus');
+        const txtqty = document.getElementById('txtQty');
 
+        btnplus.addEventListener("click",function(){
+            let qty = parseInt(txtqty.value,10);
+            if(qty < product.quantity){
+                qty++;
+                txtqty.value = qty;
+                }
+
+        })
+
+        
+
+
+
+    })
+</script>
 
 
 {% endblock content %}
