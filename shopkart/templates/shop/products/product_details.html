@@ -7,6 +7,7 @@ SHOPKART | online shopping
 
 <section class="bg-light py-4 my-5" style="min-height: 600px;">
     <div class="container">
+    
         <div class="row justify-content-center">
             <h4 class="mb-3">{{product}} Details </h4>
             <hr style="border-color:rgb(68, 53, 53);">
@@ -42,6 +43,8 @@ SHOPKART | online shopping
                 <h5 class="my-2 text-primary">offer Price :Rs {{product.selling_price | stringformat:'d'}} </h5>
                 <div class="my-3">
                     {% if product.quantity > 0 %}
+                  
+                    <input type="hidden" name="" id="pid" value="{{product.id}}">
                     <p>
                         <div class="input-group" style="width: 150px;">
                             <button class="input-group-text bg-success text-light" id="btn-minus"><i class="fa fa-minus"></i></button>
@@ -50,7 +53,7 @@ SHOPKART | online shopping
                         </div>
                     </p>
 
-                    <button class="btn btn-primary">
+                    <button id="btnCart" class="btn btn-primary">
                         <i class=" fa fa-shopping-cart">
                         </i>
                         ADD TO CART
@@ -74,21 +77,55 @@ SHOPKART | online shopping
         const btnplus = document.getElementById('btn-plus');
         const btnminus = document.getElementById('btn-minus');
         const txtqty = document.getElementById('txtQty');
+        const pid = document.getElementById("pid");
+        const btnCart = document.getElementById("btnCart");
+        //const tkn=document.querySelector('[name="csrfmiddlewaretoken"]').value;
 
         btnplus.addEventListener("click",function(){
-            let qty = parseInt(txtqty.value,10);
-            if(qty < product.quantity){
-                qty++;
-                txtqty.value = qty;
+            let currentvalue = parseInt(txtqty.value);
+            txtqty.value = currentvalue + 1;
+            if(txtqty.value > 10){
+                txtqty.value = 10;
+                }
+            
+        })
+
+        btnminus.addEventListener("click",function(){
+            let currentvalue = parseInt(txtqty.value);
+            txtqty.value = currentvalue - 1;
+            // limit range
+            if(txtqty.value < 1){
+                txtqty.value = 1;
                 }
 
         })
-
-        
-
-
-
-    })
+        btnCart.addEventListener("click", function() {
+            let qty=parseInt(txtqty.value,10);
+            qty=isNaN(qty)?0:qty;
+            
+            if(qty>0){
+              let postObj = { 
+                  'product_qty': qty, 
+                  'pid': pid.value
+              }
+              console.log(postObj);
+              fetch("{% url 'addtocart' %}", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': '{{ csrf_token }}',
+                },
+                body: JSON.stringify(postObj)
+              })
+       
+      
+            }else{
+              alert("Please Enter The Quantity");
+            }
+            
+        });
+    });
+      
 </script>
 
 
