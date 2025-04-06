@@ -5,12 +5,13 @@ from .form import CustomerForm
 from django.contrib import messages
 from django.contrib.auth import authenticate,login,logout
 import json
+
 # Create your views here.
+
 def home(request):
     product=Product.objects.filter(trending=True)
     return render(request,'shop/index.html',{'product':product})
-    
-    
+
 def logout_page(request):
     
     
@@ -18,6 +19,7 @@ def logout_page(request):
         logout(request)
         messages.success(request,"Logged out Successfully")
     return redirect('/')
+
 def add_to_cart(request):
    if request.headers.get('x-requested-with')=='XMLHttpRequest':
     if request.user.is_authenticated:
@@ -56,7 +58,6 @@ def fav_remove(request,fid):
     favitem=favorite.objects.get(id=fid)
     favitem.delete()
     return redirect('/favview')
-
 
 def cart_page(request):
     if request.user.is_authenticated:
@@ -103,7 +104,6 @@ def fav(request):
     except Exception as e:
         return JsonResponse({'status':f'Error: {str(e)}'}, status=500)
 
-
 def login_page(request):
       if request.user.is_authenticated:
           return redirect('/')
@@ -121,7 +121,6 @@ def login_page(request):
                 return redirect('login')
         
         return render(request,"shop/login.html")
-    
 
 def register(request):
     form=CustomerForm()
