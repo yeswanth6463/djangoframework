@@ -1,0 +1,66 @@
+{% extends 'shop/layouts/main.html' %}
+{% block title %}
+Register | cart details
+        {% endblock title %}
+{% block content %}
+
+<section class="bg-light py-4 my-5" style="min-height: 600px;">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12">
+                <h4 class="mb-3"> Cart Items</h4>
+                <hr style="border-color:rgb(68, 53, 53);">
+
+            </div>
+           
+            <table class="table table-bordered table-striped table-hover text-center">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Product</th>
+                        <th>Image</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Total</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody class="table-light">
+                    {% for item in cart %}
+                    <tr>
+                        <td>{{item.product.name}}</td>
+                        <td><img src="{{item.product.product_image.url}}" alt="" width="50px" height="50px"></td>
+                        <td>{{item.product.selling_price}}</td>
+                        <td>{{item.product_quantity}}</td>
+                        <td class="amt">₹{{item.total}}</td>
+                        <td><a href="{% url 'remove_cart' item.id %}" class="btn btn-danger" onclick="return confirm('are u sure to remove')">Remove</a></td>
+
+                    </tr>
+
+                    {% endfor %}
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td colspan="2"><b>
+                            Total Amount </b></td>
+                        <td id="net">0</td>
+                    </tr>
+                </tbody>
+
+            </table>
+
+        </div>
+    </div>
+
+</section>
+<script>
+    const nodes=document.querySelectorAll('.amt');
+    const arr = Array.from(nodes);
+    const res=arr.reduce((acc, curr) => {
+        return acc + parseInt(curr.innerText.replace('₹',''));
+    },0);
+    document.getElementById('net').innerText=`₹${res}`;
+</script>
+
+
+
+{% endblock content %}

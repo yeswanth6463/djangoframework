@@ -1,0 +1,55 @@
+    {% extends 'shop/layouts/main.html' %}
+{% block title %}
+Register | cart details
+        {% endblock title %}
+{% block content %}
+
+<section class="bg-light py-4 my-5" style="min-height: 600px;">
+    <div class="row justify-content-center">
+        <div class="col-12">
+            <h4 class="mb-3"> Favorite Items</h4>
+            <hr style="border-color:rgb(68, 53, 53);">
+        </div>
+
+        <div class="col-12">
+            <table class="table table-bordered table-striped table-hover text-center">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Product</th>
+                        <th>Image</th>
+                        <th>Price</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody class="table-light">
+                    {% for item in fav_items %}
+                    <tr>
+                        <td>{{item.product.name}}</td>
+                        <td><img src="{{item.product.product_image.url}}" alt="" width="50px" height="50px"></td>
+                        <td>{{item.product.selling_price}}</td>
+                        <td><a href="{% url 'fav_remove' item.id %}" class="btn btn-danger" onclick="return confirm('are u sure to remove')">Remove</a></td>
+
+
+                    </tr>
+
+                    {% endfor %}
+                </tbody>
+
+
+            </table>
+            
+
+
+
+
+
+        </div>
+
+
+
+</section>
+
+
+
+
+{% endblock content %}

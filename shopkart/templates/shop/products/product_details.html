@@ -61,7 +61,7 @@ SHOPKART | online shopping
                     {% else %}
                     <button class="btn btn-danger"><i class="fa fa-minus"> No Stocks available</i></button>
                     {% endif %}
-                    <button class="btn btn-danger">
+                    <button class="btn btn-danger" id="btnFav">
                         <i class="fa fa-heart"></i>
                     </button>
                 </div>
@@ -79,6 +79,7 @@ SHOPKART | online shopping
         const txtqty = document.getElementById('txtQty');
         const pid = document.getElementById("pid");
         const btnCart = document.getElementById("btnCart");
+        const btnFav = document.getElementById("btnFav");
         //const tkn=document.querySelector('[name="csrfmiddlewaretoken"]').value;
 
         btnplus.addEventListener("click",function(){
@@ -108,14 +109,20 @@ SHOPKART | online shopping
                   'product_qty': qty, 
                   'pid': pid.value
               }
-              console.log(postObj);
+              //console.log(postObj);
               fetch("{% url 'addtocart' %}", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                     'X-CSRFToken': '{{ csrf_token }}',
+                    'x-requested-with': 'XMLHttpRequest',
                 },
                 body: JSON.stringify(postObj)
+              }).then(response=>{
+                return response.json();
+              }).then(data=>{
+                //console.log(data);
+                alert(data['status']);
               })
        
       
@@ -125,7 +132,32 @@ SHOPKART | online shopping
             
         });
     });
-      
+    btnFav.addEventListener("click", function() {
+        
+        
+    
+          let postObj = { 
+              'pid': pid.value
+          }
+          //console.log(postObj);
+          fetch("{% url 'fav' %}", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': '{{ csrf_token }}',
+                'x-requested-with': 'XMLHttpRequest',
+            },
+            body: JSON.stringify(postObj)
+          }).then(response=>{
+            return response.json();
+          }).then(data=>{
+            //console.log(data);
+            alert(data['status']);
+          })
+   
+  
+        
+    });
 </script>
 
 

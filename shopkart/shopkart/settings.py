@@ -25,12 +25,13 @@ SECRET_KEY = 'django-insecure-aiwszy+jvsx6akffm_2)3q-w38=fsr$+=-25e4bo3&p8r4!mx(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'whitenoise.runserver_nostatic',
     'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -43,6 +44,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -128,7 +130,10 @@ MEDIA_ROOT=BASE_DIR/'static'
 STATICFILES_DIRS=[
     BASE_DIR/'static',
 ]
-
+STATIC_DIRS=[
+    BASE_DIR/'static',
+]
+STATIC_ROOT=BASE_DIR/'staticfiles'
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 

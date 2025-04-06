@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+.carousel-item img { 
+  object-fit: cover;
+  object-position: top;
+  height: 60vh;
+  overflow: hidden;
+}
+
+html{
+    font-size: 14px;
+}
+
+body{
+    font-family: 'Poppins', sans-serif;
+    background-color: rgb(73, 255, 143);
+}
+
+a{
+    text-decoration: none;
+}
+
+#oldprice{
+    font-weight: bold;
+    color: red;
+}
+
+#newprice{
+    font-weight: bold;
+    background-color: green;
+    color: white;
+    padding: 2px;
+    border-radius: 5px;
+}
+
+.pic-box{
+    position: relative;
+}
+
+.hot{
+    background-color: orangered;
+    color: white;
+    width: 50px;
+    text-align: center;
+    font-weight: bold;
+    display: inline;
+    border-radius: 5px;
+    padding: 5px;
+    position: absolute;
+    top: 0;
+    right: 20px;
+    z-index: 10;
+}
+
+
+.mscursor-cursor {
+    pointer-events: none;
+    position: fixed;
+    display: block;
+    border-radius: 0;
+    
+    top: 0;
+    left: 0;
+    z-index: 9999999999999999;  
+  }
+  .mscursor-difference{
+    mix-blend-mode: difference;
+  }
+  .mscursor-circle {
+      transform-origin: center;
+      position: absolute;
+      display: block;
+      
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+  }
+  .mscursor-border-transform{
+    animation: border-transform 3s linear infinite;
+  }
+  @keyframes border-transform {
+    0%,
+    100% {
+      border-radius: 63% 37% 54% 46% / 55% 48% 52% 45%;
+    }
+    14% {
+      border-radius: 40% 60% 54% 46% / 49% 60% 40% 51%;
+    }
+    28% {
+      border-radius: 54% 46% 38% 62% / 49% 70% 30% 51%;
+    }
+    42% {
+      border-radius: 61% 39% 55% 45% / 61% 38% 62% 39%;
+    }
+    56% {
+      border-radius: 61% 39% 67% 33% / 70% 50% 50% 30%;
+    }
+    70% {
+      border-radius: 50% 50% 34% 66% / 56% 68% 32% 44%;
+    }
+    84% {
+      border-radius: 46% 54% 50% 50% / 35% 61% 39% 65%;
+      
+    }
+  }
+  .mscursor-scale{
+    transition: .5s ease;
+    transform: scale(1.6);
+  }
+  .mscursor-scale-outline{
+    transform:scale(1.9);
+    background-color:transparent !important;
+  }
+  
+  .mscursor-nocursor{
+    cursor:none!important;
+  }
+  

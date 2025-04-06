@@ -1,0 +1,17 @@
+{
+    "builds": [
+        {
+            "src": "shopkart/package.json",
+            "use": "@vercel/static-build",
+            "config": {
+                "distDir": "shopkart/build"
+            }
+        }
+    ],
+    "routes": [
+        {
+            "src": "/(.*)",
+            "dest": "/shopkart/build/$1"
+        }
+    ]
+}
