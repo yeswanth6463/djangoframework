@@ -104,6 +104,9 @@ def fav(request):
     except Exception as e:
         return JsonResponse({'status':f'Error: {str(e)}'}, status=500)
 
+from django.views.decorators.csrf import csrf_exempt
+
+@csrf_exempt
 def login_page(request):
       if request.user.is_authenticated:
           return redirect('/')
