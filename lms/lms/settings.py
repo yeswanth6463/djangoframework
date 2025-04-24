@@ -32,12 +32,15 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+     'tailwind',
+    'theme',  # this will be your custom app (name it whatever you want)
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'lmsapp',
 ]
 
 MIDDLEWARE = [
@@ -70,6 +73,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'lms.wsgi.application'
 
+TAILWIND_APP_NAME = 'theme'  # match this to your theme app name
+INTERNAL_IPS = ["127.0.0.1"]  # needed for Tailwind to work properly in dev
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
@@ -120,7 +125,14 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
+
 STATIC_URL = 'static/'
+MEDIA_URL= '/images/'
+MEDIA_ROOT=BASE_DIR/'static'
+
+STATICFILES_DIRS=[
+    BASE_DIR/'static',
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field

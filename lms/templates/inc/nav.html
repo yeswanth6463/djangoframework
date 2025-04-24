@@ -1,0 +1,19 @@
+<nav class="navbar">
+    <div class="navbar-brand">
+        <a href="#home">My LMS</a>
+    </div>
+    <div class="navs">
+        <ul class="nav-list">
+            <li class="nav-item"><a href="#home">Home</a></li>
+            <li class="nav-item"><a href="#course">Course</a></li>
+            <li class="nav-item dropdown">
+                <a href="#login" class="dropdown-toggle">Login</a>
+                <ul class="dropdown-menu">
+                    <li><a href="{% url 'slogin' %}">Student</a></li>
+                    <li><a href="#trainer">Trainer</a></li>
+                </ul>
+            </li>
+            <li class="nav-item"><a href="#profile">Profile</a></li>
+        </ul>
+    </div>
+</nav>

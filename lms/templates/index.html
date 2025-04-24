@@ -1,11 +1,24 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>
+        {% block title %}My LMS | Home{% endblock %}
+       
+    </title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
-     index
+   
+    {% include  'inc/nav.html' %}
+    {% csrf_token %}
+
+    {% block content %}
+
+    {% endblock %}
+
+    
 </body>
 </html>
