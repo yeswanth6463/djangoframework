@@ -5,6 +5,8 @@ from rest_framework.decorators import api_view
 from .serializer import Tasskserializers
 from .models import Task
 # Create your views here.
+
++
 @api_view(['GET'])
 def serapp(request):
     api_urls={

@@ -34,6 +34,8 @@ def add_defect(request):
             return redirect('defects')  # Redirect to the main defects list
     return render(request, 'defects/add_defects.html', {'items': items})
 
+
+
 @login_required(login_url='login')
 def edit(request,id=0):
     defect = Defectsprofile.objects.get(id=id)
@@ -45,6 +47,8 @@ def edit(request,id=0):
             return redirect('defects')  # Redirect to the main defects list
     return render(request, 'defects/edit_defects.html', {'form': form})
 
+
+
 @login_required(login_url='login')
 def delete_defects(request, id=0):
     try:
@@ -54,6 +58,8 @@ def delete_defects(request, id=0):
     except Defectsprofile.DoesNotExist:
         messages.error(request, 'Defect not found.')
     return redirect('defects')  # Redirect to the main defects list
+
+
 @login_required(login_url='login')
 def add_defects(request,id=0):
     defect = Defectsprofile.objects.get(id=id)
