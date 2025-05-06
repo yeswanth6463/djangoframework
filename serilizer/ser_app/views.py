@@ -6,7 +6,7 @@ from .serializer import Tasskserializers
 from .models import Task
 # Create your views here.
 
-+
+
 @api_view(['GET'])
 def serapp(request):
     api_urls={
@@ -53,6 +53,4 @@ def taskUpdate(request,pk):
 def taskdelete(request,pk):
     task=Task.objects.get(id=pk)
     task.delete()
-   
-     
     return Response("deleted")

@@ -7,7 +7,7 @@ class UserProfile(models.Model):
     
     #additional field
     phone=models.BigIntegerField()
-    address=models.CharField(max_length=100)
+    address=models.CharField(max_length=100,unique=True)
     city = models.CharField(max_length=100)
     state=models.CharField(max_length=100)
     zipcode=models.IntegerField()
